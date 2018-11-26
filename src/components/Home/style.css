@@ -74,6 +74,7 @@
 .activeCart ul {
     background: transparent;
     display: block;
+    width: 70vw;
 }
 
 .activeCart li {

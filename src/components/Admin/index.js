@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import { withFirebase } from '../Firebase';
+import './style.css'
+import withAuthorization from "../Session/withAuthorization";
 
 class AdminPage extends Component {
     constructor(props) {
@@ -27,6 +29,22 @@ class AdminPage extends Component {
                 uid: key,
             }));
 
+            usersList.forEach(user =>{
+               user.activeCart = [];
+            });
+
+            usersList.forEach(user =>{
+               this.props.firebase.cart(user.uid).on('value', data => {
+                   data.forEach(child => {
+                       user.activeCart = child.val();
+                       this.setState({
+                           users: usersList,
+                           loading: false,
+                       });
+                   });
+               });
+            });
+
             this.setState({
                 users: usersList,
                 loading: false,
@@ -43,11 +61,11 @@ class AdminPage extends Component {
 
         return (
             <div>
-                <h1>Admin</h1>
-
                 {loading && <div>Loading ...</div>}
 
-                <UserList users={users} />
+                <div className="UserList">
+                    <UserList users={users} />
+                </div>
             </div>
         );
     }
@@ -57,18 +75,30 @@ const UserList = ({ users }) => (
     <ul>
         {users.map(user => (
             <li key={user.uid}>
-        <span>
-          <strong>ID:</strong> {user.uid}
-        </span>
-                <span>
-          <strong>E-Mail:</strong> {user.email}
-        </span>
-                <span>
-          <strong>Username:</strong> {user.username}
-        </span>
+                <p>
+                  <strong>ID:</strong> {user.uid}
+                </p>
+                <p>
+                  <strong>E-Mail:</strong> {user.email}
+                </p>
+                <p>
+                  <strong>Username:</strong> {user.username}
+                </p>
+                <hr />
+                <p className="cartTitle">Active Cart</p>
+                <ul className="cartList">
+                    {user.activeCart.map(item => (
+                        <li key={item}>
+                            {item}
+                        </li>
+                    ))}
+                </ul>
             </li>
         ))}
     </ul>
 );
 
-export default withFirebase(AdminPage);
+//export default withFirebase(AdminPage);
+
+const authCondition = authUser => !!authUser;
+export default withAuthorization(authCondition)(AdminPage);

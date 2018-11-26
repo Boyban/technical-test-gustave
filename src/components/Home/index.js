@@ -126,9 +126,6 @@ const Home = compose(
     withFirebase,
 )(HomePageBase);
 
-const condition = authUser => !!authUser;
-
-//export default HomePage;
 
 export { Home };
 

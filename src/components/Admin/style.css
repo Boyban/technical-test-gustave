@@ -1,0 +1,39 @@
+.UserList {
+    width: 90vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
+}
+
+.UserList ul {
+    width: 90vw;
+    background: transparent;
+}
+
+.UserList li {
+    width: 20vw;
+    margin-right: 2.5vw;
+    background: darkblue;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    padding-bottom: 5vh;
+}
+
+.UserList .cartTitle {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.UserList .cartList {
+    width: 100%;
+    background: transparent;
+}
+
+.UserList .cartList li {
+    font-size: 110%;
+    margin-top: 5px;
+    padding: 0;
+    width: 20vw;
+    margin-left: 10px;
+}
+
