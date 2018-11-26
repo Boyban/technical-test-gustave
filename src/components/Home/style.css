@@ -1,0 +1,86 @@
+.randomCart {
+    width: 70vw;
+    margin-left: 15vw;
+    background: #efeeee;
+    border-radius: 15px;
+    margin-top: 5vh;
+    padding-top: 5vh;
+    padding-bottom: 2vh;
+    margin-bottom: 2vh;
+}
+
+.randomCart p {
+    text-align: center;
+}
+
+.randomCart .buttonCart {
+    width: 50vw;
+    margin-left: 10vw;
+    margin-top: 5vh;
+}
+
+.randomCart .buttonCart button {
+    width: 24vw;
+    margin-right: 1vw;
+    height: 5vh;
+    border: none;
+    color: white;
+}
+
+.randomCart .buttonCart .validateBtn:disabled {
+    background: grey;
+}
+
+.randomCart .buttonCart .randomBtn {
+    background: #333333;
+}
+
+.randomCart .buttonCart .validateBtn {
+    background: blue;
+}
+
+.randomCart .buttonCart .randomBtn:hover {
+    background-color: #071f20;
+    cursor: pointer;
+}
+
+.randomCart .buttonCart .validateBtn:hover {
+    background-color: blueviolet;
+    cursor: pointer;
+}
+
+.randomCart .buttonCart .validateBtn:hover:disabled {
+    background-color: grey;
+    cursor: auto;
+}
+
+.activeCart {
+    width: 70vw;
+    margin-left: 15vw;
+    background: #120def;
+    border-radius: 15px;
+    margin-top: 5vh;
+    padding-top: 5vh;
+    padding-bottom: 2vh;
+    margin-bottom: 2vh;
+}
+
+.activeCart h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.activeCart ul {
+    background: transparent;
+    display: block;
+}
+
+.activeCart li {
+    display: block;
+    color : white;
+    font-size: 150%;
+    width: 70vw;
+    text-align: center;
+    margin-top: 5px;
+}

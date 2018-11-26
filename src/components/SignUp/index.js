@@ -5,11 +5,12 @@ import { compose } from 'recompose';
 import { withFirebase } from '../Firebase';
 import { FirebaseContext } from '../Firebase';
 
+import './style.css'
+
 import * as ROUTES from '../../constants/routes';
 
 const SignUpPage = () => (
     <div>
-        <h1>SignUp</h1>
         <SignUpForm />
     </div>
 );
@@ -63,6 +64,17 @@ class SignUpFormBase extends Component {
         this.setState({ [event.target.name]: event.target.value });
     };
 
+    componentDidMount() {
+        document.body.style.background = "url('https://i.pinimg.com/originals/a0/da/cb/a0dacbf4a4e06a776fa8e8a3cd6b24cc.png') no-repeat center fixed";
+        document.body.style.webkitBackgroundSize = "cover";
+        document.body.style.backgroundSize = "cover";
+    }
+
+    componentWillUnmount(){
+        document.body.style.backgroundImage = "";
+
+    }
+
     render() {
         const {
             username,
@@ -79,41 +91,54 @@ class SignUpFormBase extends Component {
             username === '';
 
         return (
-            <form onSubmit={this.onSubmit}>
-                <input
-                    name="username"
-                    value={username}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Full Name"
-                />
-                <input
-                    name="email"
-                    value={email}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Email Address"
-                />
-                <input
-                    name="passwordOne"
-                    value={passwordOne}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Password"
-                />
-                <input
-                    name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
-                    type="password"
-                    placeholder="Confirm Password"
-                />
-                <button disabled={isInvalid} type="submit">
-                    Sign Up
-                </button>
+            <div className="card">
+                <h1> Sign Up</h1>
+                <form onSubmit={this.onSubmit}>
+                    <div>
+                        <input
+                            name="username"
+                            value={username}
+                            onChange={this.onChange}
+                            type="text"
+                            placeholder="Full Name"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            name="email"
+                            value={email}
+                            onChange={this.onChange}
+                            type="text"
+                            placeholder="Email Address"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            name="passwordOne"
+                            value={passwordOne}
+                            onChange={this.onChange}
+                            type="password"
+                            placeholder="Password"
+                        />
+                    </div>
+                    <div>
+                        <input
+                            name="passwordTwo"
+                            value={passwordTwo}
+                            onChange={this.onChange}
+                            type="password"
+                            placeholder="Confirm Password"
+                        />
+                    </div>
+                    <div>
+                        <button disabled={isInvalid} type="submit">
+                            Sign Up
+                        </button>
+                    </div>
 
-                {error && <p>{error.message}</p>}
-            </form>
+                    {error && <p>{error.message}</p>}
+                </form>
+            </div>
         );
     }
 }
